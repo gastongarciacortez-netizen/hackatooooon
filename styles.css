@@ -1,67 +1,145 @@
+:root{
+  --bg:#eef3fb;
+  --card:#ffffff;
+  --line:#d8e1f0;
+  --text:#15233d;
+  --muted:#5f6f89;
+  --primary:#1d69d6;
+  --primary-dark:#114ea8;
+  --green:#0a8e67;
+  --green-dark:#066d4f;
+  --navy:#111c4a;
+  --soft:#f7f9fe;
+  --warning-bg:#fff7ed;
+  --warning-border:#f2b266;
+  --shadow:0 18px 40px rgba(20,39,85,.08);
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,#f6f9ff 0%,#eef3fb 100%);color:var(--text)}
+button,input,select{font:inherit}
+button{background:var(--primary);color:#fff;border:0;border-radius:12px;padding:12px 16px;font-size:14px;font-weight:700;cursor:pointer;transition:.18s ease}
+button:hover{transform:translateY(-1px);background:var(--primary-dark)}
+button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+button.secundario,.atajo,#v9-invertir,#restaurar,#deshacer,#red-reiniciar,#red-deshacer,.boton-neutro{background:#e9eff8;color:#1f3762;border:1px solid #cfdbef}
+button.secundario:hover,.atajo:hover,#v9-invertir:hover,#restaurar:hover,#deshacer:hover,#red-reiniciar:hover,#red-deshacer:hover,.boton-neutro:hover{background:#dfe9f7}
+#editar{background:#c73832}#editar.activo{background:#1b8e61}
+#descargar-ruta,#red-descargar,#med-export,#gps-exportar,#gps-importar,#importar-ruta,#red-importar{background:#355286}
+#red-calcular,#calcular,#med-calibrar,#med-iniciar,#gps-guardar,#gps-registrar-manual,#red-terminar{background:var(--green)}
+#red-calcular:hover,#calcular:hover,#med-calibrar:hover,#med-iniciar:hover,#gps-guardar:hover,#gps-registrar-manual:hover,#red-terminar:hover{background:var(--green-dark)}
+#red-dibujar{background:#6f44d9}#red-dibujar.activo,#red-vincular.activo,#gps-calibrar.activo{background:#c97511}
+#red-vincular{background:#3a5790}#med-detener{background:#c73832}#gps-parar,#gps-borrar{background:#63708b}
 
-:root{font-family:Inter,system-ui,Arial,sans-serif;color:#1b2440;background:#f4f7fc}
-*{box-sizing:border-box}body{margin:0}.barra{background:#111c4a;color:white;padding:20px clamp(18px,4vw,50px);display:flex;justify-content:space-between;align-items:center;gap:16px}h1{font-size:clamp(22px,3vw,30px);margin:4px 0 0}.subtitulo{font-size:12px;letter-spacing:2px;color:#73d7f1;font-weight:800}.etapa{font-size:12px;background:#243768;padding:8px 12px;border-radius:20px;white-space:nowrap}main{max-width:1200px;margin:auto;padding:18px}.panel{margin-bottom:14px}.panel h2{margin:0 0 6px;font-size:20px}.panel p{margin:0;color:#56617a}.acciones{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:14px}button{background:#1769d4;color:white;border:0;border-radius:9px;font-size:14px;font-weight:650;padding:11px 16px;cursor:pointer}button:hover{background:#0d50a8}button:disabled{opacity:.45;cursor:not-allowed}#editar{background:#b91c1c}#editar.activo{background:#176a43}#restaurar,#deshacer{background:#e3e9f5;color:#243768}#estado{font-size:14px;color:#43526c}.mapa-contenedor{position:relative;width:100%;height:min(70vh,700px);min-height:390px;background:#e8edf7;border:1px solid #d7deec;border-radius:15px;overflow:hidden;box-shadow:0 10px 25px #1c295018;touch-action:none}#mapa{display:block;width:100%;height:100%;cursor:grab;touch-action:none}#mapa.arrastrando{cursor:grabbing}#mapa.editando{cursor:crosshair}.controles{position:absolute;right:16px;top:16px;display:flex;flex-direction:column;gap:5px}.controles button{width:38px;height:38px;font-size:24px;padding:0;background:white;color:#14224a;box-shadow:0 2px 8px #0002}.punto{fill:#196fe0;stroke:#fff;stroke-width:3;cursor:pointer;vector-effect:non-scaling-stroke}.punto:hover,.punto:focus{fill:#ffb000;outline:none}.ruta{fill:none;stroke:#e52332;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;vector-effect:non-scaling-stroke}.nodo-ruta{fill:#fff;stroke:#e52332;stroke-width:2;pointer-events:none;vector-effect:non-scaling-stroke}.nota{font-size:13px;color:#68748b;margin:12px 0}@media(max-width:550px){.barra{padding:16px}.etapa{display:none}main{padding:12px}.mapa-contenedor{height:65vh;min-height:350px}}
+.barra{background:var(--navy);color:#fff;padding:22px clamp(18px,4vw,48px);display:flex;justify-content:space-between;align-items:flex-start;gap:18px;flex-wrap:wrap}
+.subtitulo{font-size:12px;letter-spacing:2px;color:#7dd7ef;font-weight:800;text-transform:uppercase}
+.barra h1{font-size:clamp(28px,3.2vw,38px);margin:6px 0 8px}
+.cabecera-texto{margin:0;color:#c7d7ff;max-width:640px;font-size:15px;line-height:1.5}
+.header-side{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.etapa{font-size:12px;background:#253869;padding:8px 12px;border-radius:999px;white-space:nowrap;font-weight:700}
+.header-botones{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+.header-botones .secundario{background:#1e2e5f;color:#fff;border-color:#3a4d86}
+.header-botones .secundario:hover{background:#2a3d77}
 
-#descargar-ruta{background:#08775d}#importar-ruta{background:#334c83}
+.page{max-width:1220px;margin:0 auto;padding:22px 18px 36px;display:grid;gap:18px}
+.hero-card,.navegador-card,.mapa-card,.tools-card,.card-simple{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+.hero-card{padding:20px 22px;display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+.hero-card h2{margin:0 0 8px;font-size:26px}
+.hero-card p{margin:0;color:var(--muted);max-width:720px;line-height:1.6}
+.hero-pills{display:flex;gap:10px;flex-wrap:wrap}
+.hero-pills span{background:#edf4ff;color:#21579a;padding:10px 14px;border-radius:999px;font-size:13px;font-weight:700;border:1px solid #d7e7ff}
 
-.calculadora{display:flex;align-items:flex-end;flex-wrap:wrap;gap:12px;padding:14px;margin-bottom:12px;background:#fff;border:1px solid #d9e3f2;border-radius:12px}
-.campo{display:flex;flex-direction:column;gap:5px;min-width:190px;flex:1}
-.campo label{font-size:13px;font-weight:700}
-.campo select{height:42px;border:1px solid #bfcbe1;border-radius:8px;padding:8px;background:#fff;color:#1b2440;font-size:14px}
-#calcular{background:#08775d}
-#resultado-calculo{font-size:13px;color:#34435b;margin:0;flex-basis:100%}
+.navegador-card{padding:22px}
+.card-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;flex-wrap:wrap;margin-bottom:16px}
+.card-head h2,.card-head-mini h2{margin:0 0 6px;font-size:24px}
+.card-head p,.mapa-topbar p,.panel p,.red-panel p,.gps-panel p,.medicion-panel p,.calculadora p{margin:0;color:var(--muted);line-height:1.6}
+.atajos-wrap,.v9-ejemplos{display:flex;gap:10px;flex-wrap:wrap}
+.nav-grid{display:grid;grid-template-columns:1fr 1fr auto;gap:14px;align-items:end}
+.campo{display:flex;flex-direction:column;gap:8px;min-width:180px}
+.campo label{font-size:13px;font-weight:800;color:#304364}
+.campo select,.gps-manual input,.medicion-calibracion input{height:48px;border:1px solid #c8d4e8;border-radius:12px;padding:10px 14px;background:#fff;color:var(--text);font-size:15px}
+.nav-botones{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.resultado-principal{margin-top:14px;padding:16px 18px;border-radius:16px;background:linear-gradient(180deg,#f3fbf7,#edf8f4);border:1px solid #cdeadd;font-weight:800;color:#0c6a4d;line-height:1.7;min-height:58px}
+.v9-advertencia{margin:0;padding:12px 14px;border-radius:14px;background:var(--warning-bg);border:1px solid var(--warning-border);color:#8a5311;font-size:14px}
+.mini-etiqueta{font-size:11px;font-weight:800;color:#1466be;background:#eaf4ff;padding:4px 8px;border-radius:999px;vertical-align:middle}
+
+.mapa-card{padding:18px}
+.mapa-topbar{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start;margin-bottom:12px}
+.mapa-topbar h3{margin:0 0 4px;font-size:20px}
+.mapa-contenedor{position:relative;width:100%;height:min(74vh,760px);min-height:430px;background:#e8edf7;border:1px solid #d7deec;border-radius:18px;overflow:hidden;touch-action:none}
+#mapa{display:block;width:100%;height:100%;cursor:grab;touch-action:none}
+#mapa.arrastrando{cursor:grabbing}#mapa.editando,#mapa.red-editando,#mapa.red-vinculando,#mapa.calibrando{cursor:crosshair}
+.controles{position:absolute;right:18px;top:18px;display:flex;flex-direction:column;gap:8px}
+.controles button{width:42px;height:42px;padding:0;border-radius:14px;background:#fff;color:#17315b;box-shadow:0 6px 18px rgba(0,0,0,.12);font-size:26px}
+.mapa-estado{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-top:12px;padding:12px 14px;border-radius:14px;background:#f7f9fe;border:1px solid #e5ebf5;font-size:14px;color:#40526d}
+#estado{font-weight:700}
+.gps-datos{font-size:14px;color:#4b5e7a}
+
+.tools-card{overflow:hidden}
+.tools-card>summary{list-style:none;cursor:pointer;padding:18px 22px;font-size:18px;font-weight:800;color:#203456;background:#f8fbff;border-bottom:1px solid #e3ebf6}
+.tools-card>summary::-webkit-details-marker{display:none}
+.tools-card[open]>summary{border-bottom:1px solid #e3ebf6}
+.tools-grid{padding:18px;display:grid;gap:16px}
+.card-simple{padding:18px}
+.card-head-mini{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.acciones,.red-acciones,.red-controles,.gps-acciones,.medicion-acciones{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+.red-controles .campo{flex:1}
+.red-estado,#med-estado,#gps-estado,#resultado-calculo{font-weight:700}
+.red-ayuda,.medicion-nota,.nota{font-size:13px;line-height:1.7;color:#5b6980}
+.referencias{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;margin-top:14px}
+.gps-manual{display:flex;flex-direction:column;gap:8px}
+.gps-manual small{color:#6d7a90}
+.lista-referencias{padding-left:20px;color:#495b77}
+.medicion-metricas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:14px 0}
+.medicion-metricas>div{background:#eff5fd;padding:14px;border-radius:16px;display:flex;flex-direction:column;gap:8px;border:1px solid #dde8f7}
+.medicion-metricas span{font-size:12px;color:#526079}.medicion-metricas strong{font-size:22px;color:#0e315e}
+.medicion-calibracion{background:#f7f9fd;border:1px solid #e1e7f0;border-radius:16px;padding:14px;margin-top:10px}
+.medicion-calibracion label{display:block;font-weight:800;font-size:13px;margin:12px 0 6px}
+.cal-lista{background:#eaf4ff;border-radius:14px;padding:12px 14px;margin:10px 0 16px;border:1px solid #c8dffc}
+.cal-dos-campos{display:flex;flex-wrap:wrap;gap:14px}.cal-dos-campos>div{flex:1;min-width:190px}.cal-lista button{background:#215a9d}
+#cal-resumen{font-weight:700;color:#1b426d}
+
+.nota{padding:0 2px;margin:0}
+
+/* SVG */
+.punto{fill:#196fe0;stroke:#fff;stroke-width:3;cursor:pointer;vector-effect:non-scaling-stroke}.punto:hover,.punto:focus{fill:#ffb000;outline:none}
+.ruta{fill:none;stroke:#e52332;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;pointer-events:none;vector-effect:non-scaling-stroke}
+.nodo-ruta{fill:#fff;stroke:#e52332;stroke-width:2;pointer-events:none;vector-effect:non-scaling-stroke}
 .ruta-calculada{fill:none;stroke:#00ad78;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
 .inicio-calculado{fill:#16a34a;stroke:white;stroke-width:3;vector-effect:non-scaling-stroke;pointer-events:none}
 .fin-calculado{fill:#ef4444;stroke:white;stroke-width:3;vector-effect:non-scaling-stroke;pointer-events:none}
-
-/* V7: calibración GPS */
-.gps-panel{background:white;border:1px solid #d9e3f2;border-radius:12px;padding:16px;margin-bottom:12px}
-.gps-panel h2{font-size:19px;margin:0 0 6px}.gps-panel h3{font-size:15px;margin:0 0 6px}.gps-panel p{color:#4f5e77;font-size:13px;margin:5px 0 10px}
-.mini-etiqueta{font-size:11px;color:#167ad1;background:#eaf4ff;padding:3px 7px;border-radius:16px;vertical-align:middle}
-.gps-acciones{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:10px 0}
-#gps-iniciar{background:#1769d4}#gps-parar,#gps-borrar{background:#5e6880}#gps-calibrar{background:#7157b5}#gps-calibrar.activo{background:#b45309}#gps-guardar,#gps-registrar-manual{background:#08775d}#gps-exportar,#gps-importar{background:#334c83}
-.gps-estado{font-weight:600}.gps-datos{font-size:13px;color:#4f5e77}
-.referencias{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;margin:10px 0}
-.gps-manual{display:flex;flex-direction:column;gap:6px}.gps-manual label{font-size:13px;font-weight:700}.gps-manual input{border:1px solid #bfcbe1;border-radius:8px;padding:9px;max-width:290px}.gps-manual button{align-self:start}.gps-manual small{color:#6a7385}
-.lista-referencias{padding-left:22px;font-size:13px}.lista-referencias li{margin:5px 0}
+.red-segmento{stroke:#6955b2;stroke-width:3;fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke;pointer-events:none;opacity:.85}
+.red-nodo{fill:#fff;stroke:#6148ad;stroke-width:2.4;vector-effect:non-scaling-stroke;pointer-events:none;opacity:.85}
+.red-nodo-vinculado{fill:#fbbf24;stroke:#523700;stroke-width:2.5;vector-effect:non-scaling-stroke;pointer-events:none}
+.red-nodo-inicio{fill:#fbbf24;stroke:#5f3e00;stroke-width:2;pointer-events:none;vector-effect:non-scaling-stroke}
+.red-ruta{stroke:#059669;stroke-width:7;fill:none;stroke-linejoin:round;stroke-linecap:round;pointer-events:none;vector-effect:non-scaling-stroke}
 .gps-precision{fill:#1982ff;fill-opacity:.12;stroke:#1d79e8;stroke-dasharray:4 4;stroke-width:1.5;vector-effect:non-scaling-stroke;pointer-events:none}
 .gps-ubicacion{fill:#0877ee;stroke:#fff;stroke-width:4;vector-effect:non-scaling-stroke;pointer-events:none}
 .gps-referencia{fill:#f59e0b;stroke:#fff;stroke-width:2.5;vector-effect:non-scaling-stroke;pointer-events:none}
 .gps-etiqueta{fill:#684000;font-size:12px;font-weight:bold;paint-order:stroke;stroke:white;stroke-width:3px;pointer-events:none}
-#mapa.calibrando{cursor:crosshair}
-@media(max-width:720px){.referencias{grid-template-columns:1fr}}
 
-/* V8: rutas entre edificios */
-.red-panel{background:#fff;border:1px solid #d9e3f2;border-radius:12px;padding:16px;margin-bottom:14px}
-.red-panel h2{font-size:19px;margin:0 0 7px}.red-panel p{font-size:13px;color:#4f5e77}
-.red-acciones,.red-controles{display:flex;align-items:end;gap:10px;flex-wrap:wrap;margin:12px 0}
-.red-controles .campo{flex:1;min-width:180px}
-#red-dibujar{background:#6d28d9}#red-dibujar.activo,#red-vincular.activo{background:#b45309}
-#red-vincular{background:#38558e}#red-terminar,#red-calcular{background:#08775d}
-#red-reiniciar,#red-deshacer{background:#e3e9f5;color:#243768}#red-descargar,#red-importar{background:#334c83}
-.red-estado{font-weight:700}.red-resultado{font-weight:700;color:#08654b!important}.red-ayuda{line-height:1.6}
-#mapa.red-editando,#mapa.red-vinculando{cursor:crosshair}
-.red-segmento{stroke:#6955b2;stroke-width:3;fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke;pointer-events:none;opacity:.8}
-.red-nodo{fill:#fff;stroke:#6148ad;stroke-width:2.4;vector-effect:non-scaling-stroke;pointer-events:none;opacity:.8}
-.red-nodo-vinculado{fill:#fbbf24;stroke:#523700;stroke-width:2.5;vector-effect:non-scaling-stroke;pointer-events:none}
-.red-nodo-inicio{fill:#fbbf24;stroke:#5f3e00;stroke-width:2;pointer-events:none;vector-effect:non-scaling-stroke}
-.red-ruta{stroke:#08956b;stroke-width:7;fill:none;stroke-linejoin:round;stroke-linecap:round;pointer-events:none;vector-effect:non-scaling-stroke}
+/* Presentación: esconder red técnica y línea de edición para que se vea limpio */
+body.modo-presentacion:not(.mostrar-red-tecnica) #recorrido,
+body.modo-presentacion:not(.mostrar-red-tecnica) #red-tramos,
+body.modo-presentacion:not(.mostrar-red-tecnica) #red-nodos{display:none}
 
-/* V9: controles de navegación */
-.v9-ejemplos{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}.v9-ejemplos button,#v9-invertir{background:#e6eef9;color:#19345a;border:1px solid #c7d6eb}.v9-advertencia{background:#fff7ed;border-left:3px solid #e59a2c;padding:9px 12px;color:#844700!important;border-radius:5px}.red-controles:has(#red-origen){padding:12px;background:#eef5ff;border-radius:10px}.red-ruta{stroke:#059669;stroke-width:7}
-
-/* V10 - medición GPS de caminata */
-.medicion-panel{background:#fff;border:1px solid #d9e3f2;border-radius:12px;padding:16px;margin:14px 0}
-.medicion-panel h2{font-size:19px;margin:0 0 9px}.medicion-panel h3{font-size:16px;margin:3px 0 9px}
-.medicion-panel p{font-size:13px;color:#4f5e77;line-height:1.6}
-.medicion-acciones{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
-#med-iniciar,#med-calibrar{background:#08775d}#med-detener{background:#b91c1c}
-#med-reset,.boton-neutro{background:#e3e9f5;color:#243768}#med-export{background:#334c83}
-.medicion-metricas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0}
-.medicion-metricas>div{background:#eff5fd;padding:13px;border-radius:10px;display:flex;flex-direction:column;gap:8px}
-.medicion-metricas span{font-size:12px;color:#526079}.medicion-metricas strong{font-size:21px;color:#0e315e}
-#med-estado{font-weight:650;color:#214e72}.medicion-calibracion{background:#f7f9fd;border:1px solid #e1e7f0;border-radius:10px;padding:13px}
-.medicion-calibracion label{display:block;font-weight:700;font-size:13px;margin:12px 0 5px}
-.medicion-calibracion input{display:block;border:1px solid #bfcbe1;border-radius:8px;padding:10px;font-size:16px;width:min(100%,320px);margin-bottom:10px}
-.medicion-calibracion button{margin:0 7px 8px 0}.medicion-nota{background:#fff8e8;padding:10px;border-radius:8px}
-@media(max-width:680px){.medicion-metricas{grid-template-columns:repeat(2,minmax(0,1fr))}.medicion-metricas strong{font-size:18px}}
+@media (max-width:900px){
+  .nav-grid{grid-template-columns:1fr}
+  .nav-botones{justify-content:flex-start}
+  .referencias{grid-template-columns:1fr}
+}
+@media (max-width:720px){
+  .page{padding:14px 12px 26px}
+  .barra{padding:18px 14px}
+  .header-side{align-items:flex-start}
+  .medicion-metricas{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .medicion-metricas strong{font-size:19px}
+  .hero-card h2,.card-head h2{font-size:22px}
+  .mapa-contenedor{height:65vh;min-height:360px}
+}
+@media (max-width:520px){
+  .hero-pills span{font-size:12px;padding:8px 10px}
+  .mapa-estado{font-size:13px}
+  .controles{right:12px;top:12px}
+  .controles button{width:38px;height:38px}
+  .medicion-metricas{grid-template-columns:1fr 1fr}
+}

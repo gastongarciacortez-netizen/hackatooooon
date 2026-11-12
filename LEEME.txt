@@ -1,10 +1,12 @@
-MAPA UCB V10 — MEDICIÓN GPS
+MAPA UCB V10.1 - CALIBRACION DE DISTANCIAS
 
-1. Abrir index.html con Live Server para probar el mapa. Para medir GPS en el celular publicar TODOS los archivos de esta carpeta con GitHub Pages (HTTPS).
-2. En el celular, abre sección «Medir caminata GPS». Activa ubicación precisa y pulsa «Iniciar medición» en el ingreso principal.
-3. Camina hasta el acceso exterior de la Biblioteca, siguiendo exactamente el recorrido seleccionado en la red. Mantén el navegador en primer plano y pantalla encendida.
-4. Pulsa «Detener», revisa precisión y distancia; descarga medicion-caminata-ucb.json SOLO para guardarlo de forma privada. No subir a repositorios públicos.
-5. Pulsa «Calibrar escala» para usar esa distancia y convertir unidades del plano a metros estimados. Se almacena en el navegador local.
-6. Repite caminata varias veces y revisa que la escala sea consistente. No recalibres con recorridos diferentes de Ingreso → Biblioteca.
+1. Abrir index.html en Live Server (para GPS en celular: subir archivos a GitHub Pages con HTTPS).
+2. En la zona «Calibración de la escala» figura la primera caminata confirmada: 77,2847 m del Ingreso a Biblioteca.
+3. Para aplicar la escala provisoria pulsa «Usar promedio de mediciones» y luego «Calibrar escala con esta distancia».
+4. La escala se calcula usando la DISTANCIA ACTUAL DE LA RED entre Ingreso y Biblioteca, que en el archivo suministrado es 347,0067 unidades.
+5. Puedes añadir una segunda y tercera caminata del MISMO RECORRIDO y cargar su promedio. Idealmente contrastar con otra distancia independiente.
+6. El navegador puede recordar datos anteriores en localStorage. Si editas la red, vuelve a calibrar porque la longitud del camino puede cambiar.
+7. NO subir archivos medicion-caminata-ucb.json o calibracion-ucb.json públicos: contienen ubicaciones precisas. Importa calibración GPS en el navegador cuando la necesites.
+8. Distancias en metros de otras zonas son ESTIMACIONES y dependen de la uniformidad de la escala del plano. No se han validado entradas a Coliseo/Atrio.
 
-NOTA: GPS no equivale a una cinta métrica. Se rechazan puntos de precisión peor de 20 m y saltos a más de 3.5 m/s. Aún puede haber errores. Distancias estimadas en toda la red suponen escala uniforme del plano.
+Todos los datos de calibración de distancia incorporados a V10.1 son agregados: no se incluyen coordenadas de caminata ni referencias privadas.
