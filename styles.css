@@ -149,3 +149,15 @@ body.modo-presentacion:not(.mostrar-red-tecnica) #red-nodos{display:none}
 .barra.barra-minimal h1{font-size:clamp(26px,3.2vw,38px);margin:0;line-height:1.2;letter-spacing:-.025em}
 .opciones-vista{display:flex;gap:10px;flex-wrap:wrap;padding:16px 20px 4px}
 @media(max-width:720px){.barra.barra-minimal{min-height:72px;padding:18px 14px}}
+
+/* Acceso rápido al GPS, siempre visible junto al nombre del mapa */
+.ubicacion-header{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.ubicacion-header #gps-iniciar{background:#22a27c;color:#fff;box-shadow:0 4px 14px rgba(0,0,0,.13)}
+.ubicacion-header #gps-iniciar:hover{background:#138264}
+.ubicacion-header #gps-parar{background:#31446e;color:#fff;border:1px solid #566790}
+.ubicacion-header #gps-parar:disabled{display:none}
+@media(max-width:520px){
+ .barra.barra-minimal{align-items:flex-start;gap:12px}
+ .ubicacion-header{width:100%}
+ .ubicacion-header button{flex:1}
+}

@@ -6,3 +6,5 @@ Esta versión carga de forma predeterminada la nueva red utilizando una clave lo
 Abrir index.html con Live Server o publicar los archivos en GitHub Pages.
 No subir archivos JSON de recorridos GPS personales.
 Las distancias en metros continúan siendo estimaciones provisionales.
+
+Actualizacion visual: el boton Mi ubicacion y Detener GPS aparecen arriba, junto al titulo. Funcionalidad GPS, rutas y calibracion intactas.

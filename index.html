@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Una Yaha Cato Map</title>
-  <link rel="stylesheet" href="styles.css?v=12-1">
+  <link rel="stylesheet" href="styles.css?v=13">
 </head>
 <body class="modo-presentacion">
-<header class="barra barra-minimal"><h1>Una Yaha Cato Map</h1></header>
+<header class="barra barra-minimal"><h1>Una Yaha Cato Map</h1><div class="ubicacion-header"><button id="gps-iniciar" type="button">📍 Mi ubicación</button><button id="gps-parar" type="button" disabled>Detener GPS</button></div></header>
 
 <main class="page">
   <section class="hero-card">
@@ -138,8 +138,6 @@
         </div>
         <p>Activa el GPS o administra la calibración del plano.</p>
         <div class="gps-acciones">
-          <button id="gps-iniciar" type="button">📍 Mi ubicación</button>
-          <button id="gps-parar" type="button" disabled>Detener GPS</button>
           <button id="gps-calibrar" type="button">Elegir punto de referencia en el mapa</button>
           <button id="gps-guardar" type="button" disabled>Registrar referencia con GPS</button>
         </div>
