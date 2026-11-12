@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>UCB | Mapa interactivo V7</title>
-  <link rel="stylesheet" href="styles.css?v=7">
+  <title>UCB | Mapa interactivo V10</title>
+  <link rel="stylesheet" href="styles.css?v=10">
 </head>
 <body>
-<header class="barra"><div><div class="subtitulo">TECH MECH 2026</div><h1>Mapa interactivo UCB</h1></div><span class="etapa">Prototipo · V7</span></header>
+<header class="barra"><div><div class="subtitulo">TECH MECH 2026</div><h1>Mapa interactivo UCB</h1></div><span class="etapa">Prototipo · V10</span></header>
 <main>
   <section class="panel"><h2>Explora el campus</h2><p>Acércate, arrastra el mapa y toca los puntos azules para ver los edificios.</p>
   <div class="acciones"><button id="reiniciar" type="button">Ver mapa completo</button><button id="editar" type="button">Editar recorrido</button><button id="deshacer" type="button" disabled>Deshacer punto</button><button id="restaurar" type="button">Restaurar línea roja</button><button id="descargar-ruta" type="button">Descargar ruta</button><button id="importar-ruta" type="button">Importar ruta</button><input id="archivo-ruta" type="file" accept=".json,application/json" hidden><span id="estado" aria-live="polite">Recorrido provisional según tu dibujo</span></div></section>
@@ -16,6 +16,35 @@
     <div class="campo"><label for="destino">Punto de destino</label><select id="destino"></select></div>
     <button type="button" id="calcular">Calcular ruta con Dijkstra</button>
     <p id="resultado-calculo" aria-live="polite">Selecciona dos puntos y pulsa «Calcular ruta».</p>
+  </section>
+
+  <section class="red-panel" aria-labelledby="red-titulo">
+    <h2 id="red-titulo">Red peatonal entre edificios <span class="mini-etiqueta">V9</span></h2>
+    <p><strong>Elige desde dónde sales y a qué edificio quieres llegar.</strong> La línea verde marcará el recorrido más corto dentro de tu red. Los accesos aún son provisionales.</p>
+    <div class="red-acciones">
+      <button type="button" id="red-dibujar">➕ Dibujar camino nuevo</button>
+      <button type="button" id="red-terminar" disabled>Terminar camino</button>
+      <button type="button" id="red-deshacer" disabled>Deshacer último punto</button>
+      <button type="button" id="red-reiniciar">Recrear red desde ruta roja</button>
+      <button type="button" id="red-descargar">Descargar red</button>
+      <button type="button" id="red-importar">Importar red</button>
+      <input type="file" id="red-archivo" accept=".json,application/json" hidden>
+    </div>
+    <div class="red-controles">
+      <div class="campo"><label for="red-edificio">Edificio o lugar que deseas conectar</label><select id="red-edificio"></select></div>
+      <button type="button" id="red-vincular">📌 Vincular acceso del edificio</button>
+    </div>
+    <div class="red-controles">
+      <div class="campo"><label for="red-origen">Desde</label><select id="red-origen"></select></div>
+      <div class="campo"><label for="red-destino">Hasta</label><select id="red-destino"></select></div>
+      <button type="button" id="red-calcular">🧭 Mostrar ruta</button>
+      <button type="button" id="v9-invertir">⇄ Invertir</button>
+    </div>
+    <div class="v9-ejemplos"><button type="button" id="v9-ingreso-biblioteca">Ingreso → Biblioteca</button><button type="button" id="v9-ingreso-coliseo">Ingreso → Coliseo</button></div>
+    <p id="v9-advertencia" class="v9-advertencia">⚠️ Red elaborada a partir de tu dibujo. Confirmar entradas, cruces y senderos en el campus.</p>
+    <p id="red-estado" class="red-estado" aria-live="polite">Red preparada. Dibuja una conexión desde un nodo de la ruta roja hasta el acceso de otro edificio.</p>
+    <p id="red-resultado" class="red-resultado" aria-live="polite">No se ha calculado ningún recorrido entre edificios.</p>
+    <p class="red-ayuda"><strong>Instrucciones:</strong> «Dibujar camino nuevo» → toca un punto de la ruta existente → toca las curvas del pasillo → «Terminar camino». Luego selecciona un edificio, pulsa «Vincular acceso» y toca el nodo de su entrada. Puedes repetirlo con otros edificios. Los puntos cercanos (12 unidades de plano) se unen a la red existente. <strong>Las distancias todavía no son metros.</strong></p>
   </section>
   <section class="gps-panel" aria-labelledby="gps-titulo">
     <h2 id="gps-titulo">Ubicación GPS <span class="mini-etiqueta">V7</span></h2>
@@ -51,20 +80,52 @@
       <span id="gps-punto-seleccionado" class="gps-datos">Punto del plano: ninguno</span>
     </div>
   </section>
+  <section class="medicion-panel" aria-labelledby="medicion-titulo">
+    <h2 id="medicion-titulo">📏 Medir caminata GPS y calibrar metros <span class="mini-etiqueta">V10</span></h2>
+    <p>Camina por el recorrido <strong>Ingreso principal → Biblioteca</strong> (acceso exterior marcado en la red). Activa el GPS, inicia la medición, camina con el celular abierto y detén la medición al llegar.</p>
+    <div class="medicion-acciones">
+      <button id="med-iniciar" type="button">▶ Iniciar medición</button>
+      <button id="med-detener" type="button" disabled>■ Detener</button>
+      <button id="med-reset" type="button">↺ Reiniciar medición</button>
+      <button id="med-export" type="button" disabled>↓ Descargar medición JSON</button>
+    </div>
+    <div class="medicion-metricas">
+      <div><span>Distancia GPS filtrada</span><strong id="med-metros">0,0 m</strong></div>
+      <div><span>Tiempo transcurrido</span><strong id="med-tiempo">00:00</strong></div>
+      <div><span>Precisión última lectura</span><strong id="med-precision">Sin datos</strong></div>
+      <div><span>Puntos GPS aceptados</span><strong id="med-puntos">0</strong></div>
+    </div>
+    <p id="med-estado" aria-live="polite">Listo para medir. Necesitas HTTPS y permiso de ubicación.</p>
+    <div class="medicion-calibracion">
+      <h3>Calibración de la escala</h3>
+      <p>La referencia fija es Ingreso principal → Biblioteca. El programa obtiene las unidades de ese recorrido desde tu red y permite convertirlas a metros con la caminata registrada.</p>
+      <label for="med-real">Distancia real utilizada (metros)</label>
+      <input id="med-real" type="number" min="1" step="0.1" inputmode="decimal" placeholder="Se completará al detener la medición">
+      <button id="med-calibrar" type="button">Calibrar escala con esta distancia</button>
+      <button id="med-borrar-escala" type="button" class="boton-neutro">Borrar escala</button>
+      <p id="med-escala" aria-live="polite">Escala sin calibrar. Los resultados del navegador de rutas siguen en unidades del plano.</p>
+    </div>
+    <p class="medicion-nota">⚠️ El GPS puede sumar metros falsos por saltos. Se filtran lecturas poco precisas, pero el resultado es aproximado. Mantén la pantalla encendida, evita interiores y compara varias caminatas. El archivo JSON contiene coordenadas personales: <strong>no lo publiques en GitHub</strong>.</p>
+  </section>
   <div class="mapa-contenedor" id="contenedor">
     <svg id="mapa" viewBox="0 0 942 569" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa interactivo del campus UCB con marcadores de edificios">
       <image href="mapa-ucb.png" x="0" y="0" width="942" height="569" preserveAspectRatio="none"/>
       <g id="recorrido"></g>
       <g id="ruta-calculada"></g>
+      <g id="red-tramos"></g>
+      <g id="red-calculada"></g>
+      <g id="red-nodos"></g>
       <g id="marcadores"></g>
       <g id="capa-referencias"></g>
       <g id="capa-ubicacion"></g>
     </svg>
     <div class="controles"><button id="zoom-in" title="Acercar" aria-label="Acercar">+</button><button id="zoom-out" title="Alejar" aria-label="Alejar">−</button></div>
   </div>
-  <p class="nota">Traza tu ruta con «Editar recorrido». Los puntos se guardan automáticamente en este navegador. Para compartirlos o conservarlos como archivo, usa «Descargar ruta». Para recuperar un archivo, usa «Importar ruta». La línea verde se calcula con Dijkstra únicamente sobre el recorrido guardado. Con un solo camino no hay alternativas para comparar. Las longitudes son unidades del plano, no metros. El GPS necesita tres referencias geográficas reales para proyectar tu ubicación sobre el plano; su precisión puede ser insuficiente dentro de edificios.</p>
+  <p class="nota">Traza tu ruta con «Editar recorrido». Los puntos se guardan automáticamente en este navegador. Para compartirlos o conservarlos como archivo, usa «Descargar ruta». Para recuperar un archivo, usa «Importar ruta». La red V9 permite añadir caminos verificados y calcular rutas entre edificios que tengan sus accesos conectados. La calculadora anterior sigue disponible para probar los puntos de la ruta roja. El archivo red-peatonal-ucb.json se incluye en el proyecto y se carga como red inicial. Las longitudes son unidades del plano, no metros. El GPS necesita tres referencias geográficas reales para proyectar tu ubicación sobre el plano; su precisión puede ser insuficiente dentro de edificios.</p>
 </main>
-<script src="app.js?v=7-gps-1"></script>
-<script src="gps.js?v=7-1"></script>
+<script src="app.js?v=10-1"></script>
+<script src="gps.js?v=10-1"></script>
+<script src="red.js?v=10-1"></script>
+<script src="medicion.js?v=10-1"></script>
 </body>
 </html>

@@ -30,3 +30,38 @@
 .gps-etiqueta{fill:#684000;font-size:12px;font-weight:bold;paint-order:stroke;stroke:white;stroke-width:3px;pointer-events:none}
 #mapa.calibrando{cursor:crosshair}
 @media(max-width:720px){.referencias{grid-template-columns:1fr}}
+
+/* V8: rutas entre edificios */
+.red-panel{background:#fff;border:1px solid #d9e3f2;border-radius:12px;padding:16px;margin-bottom:14px}
+.red-panel h2{font-size:19px;margin:0 0 7px}.red-panel p{font-size:13px;color:#4f5e77}
+.red-acciones,.red-controles{display:flex;align-items:end;gap:10px;flex-wrap:wrap;margin:12px 0}
+.red-controles .campo{flex:1;min-width:180px}
+#red-dibujar{background:#6d28d9}#red-dibujar.activo,#red-vincular.activo{background:#b45309}
+#red-vincular{background:#38558e}#red-terminar,#red-calcular{background:#08775d}
+#red-reiniciar,#red-deshacer{background:#e3e9f5;color:#243768}#red-descargar,#red-importar{background:#334c83}
+.red-estado{font-weight:700}.red-resultado{font-weight:700;color:#08654b!important}.red-ayuda{line-height:1.6}
+#mapa.red-editando,#mapa.red-vinculando{cursor:crosshair}
+.red-segmento{stroke:#6955b2;stroke-width:3;fill:none;stroke-linecap:round;vector-effect:non-scaling-stroke;pointer-events:none;opacity:.8}
+.red-nodo{fill:#fff;stroke:#6148ad;stroke-width:2.4;vector-effect:non-scaling-stroke;pointer-events:none;opacity:.8}
+.red-nodo-vinculado{fill:#fbbf24;stroke:#523700;stroke-width:2.5;vector-effect:non-scaling-stroke;pointer-events:none}
+.red-nodo-inicio{fill:#fbbf24;stroke:#5f3e00;stroke-width:2;pointer-events:none;vector-effect:non-scaling-stroke}
+.red-ruta{stroke:#08956b;stroke-width:7;fill:none;stroke-linejoin:round;stroke-linecap:round;pointer-events:none;vector-effect:non-scaling-stroke}
+
+/* V9: controles de navegación */
+.v9-ejemplos{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}.v9-ejemplos button,#v9-invertir{background:#e6eef9;color:#19345a;border:1px solid #c7d6eb}.v9-advertencia{background:#fff7ed;border-left:3px solid #e59a2c;padding:9px 12px;color:#844700!important;border-radius:5px}.red-controles:has(#red-origen){padding:12px;background:#eef5ff;border-radius:10px}.red-ruta{stroke:#059669;stroke-width:7}
+
+/* V10 - medición GPS de caminata */
+.medicion-panel{background:#fff;border:1px solid #d9e3f2;border-radius:12px;padding:16px;margin:14px 0}
+.medicion-panel h2{font-size:19px;margin:0 0 9px}.medicion-panel h3{font-size:16px;margin:3px 0 9px}
+.medicion-panel p{font-size:13px;color:#4f5e77;line-height:1.6}
+.medicion-acciones{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}
+#med-iniciar,#med-calibrar{background:#08775d}#med-detener{background:#b91c1c}
+#med-reset,.boton-neutro{background:#e3e9f5;color:#243768}#med-export{background:#334c83}
+.medicion-metricas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:12px 0}
+.medicion-metricas>div{background:#eff5fd;padding:13px;border-radius:10px;display:flex;flex-direction:column;gap:8px}
+.medicion-metricas span{font-size:12px;color:#526079}.medicion-metricas strong{font-size:21px;color:#0e315e}
+#med-estado{font-weight:650;color:#214e72}.medicion-calibracion{background:#f7f9fd;border:1px solid #e1e7f0;border-radius:10px;padding:13px}
+.medicion-calibracion label{display:block;font-weight:700;font-size:13px;margin:12px 0 5px}
+.medicion-calibracion input{display:block;border:1px solid #bfcbe1;border-radius:8px;padding:10px;font-size:16px;width:min(100%,320px);margin-bottom:10px}
+.medicion-calibracion button{margin:0 7px 8px 0}.medicion-nota{background:#fff8e8;padding:10px;border-radius:8px}
+@media(max-width:680px){.medicion-metricas{grid-template-columns:repeat(2,minmax(0,1fr))}.medicion-metricas strong{font-size:18px}}
