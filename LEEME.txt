@@ -1,12 +1,8 @@
-MAPA UCB V10.1 - CALIBRACION DE DISTANCIAS
+UNA YAHA CATO MAP - RED ACTUALIZADA
 
-1. Abrir index.html en Live Server (para GPS en celular: subir archivos a GitHub Pages con HTTPS).
-2. En la zona «Calibración de la escala» figura la primera caminata confirmada: 77,2847 m del Ingreso a Biblioteca.
-3. Para aplicar la escala provisoria pulsa «Usar promedio de mediciones» y luego «Calibrar escala con esta distancia».
-4. La escala se calcula usando la DISTANCIA ACTUAL DE LA RED entre Ingreso y Biblioteca, que en el archivo suministrado es 347,0067 unidades.
-5. Puedes añadir una segunda y tercera caminata del MISMO RECORRIDO y cargar su promedio. Idealmente contrastar con otra distancia independiente.
-6. El navegador puede recordar datos anteriores en localStorage. Si editas la red, vuelve a calibrar porque la longitud del camino puede cambiar.
-7. NO subir archivos medicion-caminata-ucb.json o calibracion-ucb.json públicos: contienen ubicaciones precisas. Importa calibración GPS en el navegador cuando la necesites.
-8. Distancias en metros de otras zonas son ESTIMACIONES y dependen de la uniformidad de la escala del plano. No se han validado entradas a Coliseo/Atrio.
-
-Todos los datos de calibración de distancia incorporados a V10.1 son agregados: no se incluyen coordenadas de caminata ni referencias privadas.
+Nueva red importada: 62 nodos, 70 conexiones, 14 accesos.
+Se conservan rutas, GPS y calibración del proyecto anterior.
+Esta versión carga de forma predeterminada la nueva red utilizando una clave local propia (ucb_red_peatonal_v12), sin borrar la red anterior guardada por el navegador.
+Abrir index.html con Live Server o publicar los archivos en GitHub Pages.
+No subir archivos JSON de recorridos GPS personales.
+Las distancias en metros continúan siendo estimaciones provisionales.
