@@ -1,0 +1,22 @@
+MAPA UCB V7 - GPS + CALIBRACIÓN
+
+1. Abrir index.html con Live Server en VS Code.
+2. GPS: el navegador requiere HTTPS o localhost, y permiso de ubicación.
+   Para probar desde un teléfono, publicar en un sitio HTTPS (ej. GitHub Pages).
+   No abras http://192.168.x.x:5500 en el móvil esperando que funcione el GPS.
+3. En el campus, ir a tres lugares claramente identificables y separados.
+   En cada uno, activar «Mi ubicación», esperar una medición, elegir en el plano
+   el punto real donde estás y pulsar «Registrar referencia con GPS».
+   Alternativamente introducir latitud/longitud REAL medida en ese punto.
+4. Al tener 3 referencias no alineadas, aparece un punto GPS azul con círculo
+   aproximado de precisión (si la ubicación proyecta dentro del plano).
+5. Descargar calibración para conservar y compartir referencias con tu equipo.
+
+IMPORTANTE
+- La ubicación GPS es estimada; paredes, cubiertas y edificios causan errores.
+- Las referencias deben ser correspondencias reales, no coordenadas inventadas.
+- La calibración de 3 puntos es una aproximación afín local, no topografía precisa.
+- El programa no envía la ubicación a ningún servidor: queda en el navegador.
+- La ruta V6 con Dijkstra sigue operando sobre un único recorrido peatonal.
+- Para navegación real hacen falta más caminos conectados y distancias medidas.
+- Si la precisión GPS es mala, usar selección manual o un código QR.
